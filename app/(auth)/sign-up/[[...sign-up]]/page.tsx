@@ -1,12 +1,12 @@
-"use client";
-import React from 'react'
+import React from 'react';
+import { SignUp } from "@clerk/nextjs";
 
 interface SignUpPageProps {}
 
 const SignUpPage: React.FC<SignUpPageProps> = () => {
-    console.log("client-side component");
+
   return (
-    <div>SignUP</div>
+    <SignUp />
   )
 }
 
