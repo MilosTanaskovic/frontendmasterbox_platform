@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = () => {
           alt="FrontMasterBox Logo"
         />
         <p className=" h2-bold font-spaceGrotesk text-dark-100 max-sm:hidden dark:text-light-900">
-          Frontent<span className="text-primary-500">Box</span>
+          Frontend<span className="text-primary-500">Box</span>
         </p>
       </Link>
       {/** Global Search */}
