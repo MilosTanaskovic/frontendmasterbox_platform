@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import Theme from "./Theme";
 import MobileNav from "./MobileNav";
+import GlobalSearch from "../search/GlobalSearch";
 
 interface HeaderProps {}
 
@@ -26,7 +27,7 @@ const Header: React.FC<HeaderProps> = () => {
         </p>
       </Link>
       {/** Global Search */}
-      GlobalSearch
+      <GlobalSearch />
       {/** Theme & User Profile */}
       <div className=" flex-between gap-5">
         <Theme />
