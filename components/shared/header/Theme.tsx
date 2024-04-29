@@ -1,3 +1,4 @@
+// this component using menubar ui
 "use client";
 import React from "react";
 import {
@@ -45,7 +46,7 @@ const Theme: React.FC<ThemeProps> = () => {
               alt="moon"
               width={20}
               height={20}
-              className="active-theme"
+              className=""
             />
           ) : (
             <Image
@@ -53,7 +54,7 @@ const Theme: React.FC<ThemeProps> = () => {
               alt="sun"
               width={20}
               height={20}
-              className="active-theme"
+              className=""
             />
           )}
         </MenubarTrigger>
@@ -70,13 +71,13 @@ const Theme: React.FC<ThemeProps> = () => {
                 alt={item.value}
                 width={16}
                 height={16}
-                className={`${mode === item.value && "active-theme"}`}
+                className={`${mode === item.value ? "text-primary-500" : " active-theme"}`}
               />
               <p
                 className={` body-semibold text-light-500 ${
                   mode === item.value
                     ? "text-primary-500"
-                    : " text-dark100_light900"
+                    : " " // active-theme
                 }`}
               >
                 {item.label}

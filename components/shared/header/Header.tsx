@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Theme from "./Theme";
+import MobileNav from "./MobileNav";
 
 interface HeaderProps {}
 
@@ -44,6 +45,7 @@ const Header: React.FC<HeaderProps> = () => {
         </SignedIn>
 
         {/** Mobile Menu */}
+        <MobileNav />
       </div>
     </header>
   );
