@@ -23,3 +23,9 @@ export interface Theme {
   label: "Dark" | "Light" | "System";
   icon: string;
 }
+
+export interface SidebarLink {
+  imgURL: string;
+  route: string;
+  label: string;
+}
