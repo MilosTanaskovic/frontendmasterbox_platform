@@ -1,5 +1,4 @@
 import { SignedIn, UserButton } from "@clerk/nextjs";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Theme from "./Theme";
@@ -16,14 +15,15 @@ const Header: React.FC<HeaderProps> = () => {
     >
       {/** Logo */}
       <Link href={"/"} className=" flex items-center gap-1">
-        <Image
+        {/* <Image
           src={"/assets/images/site-logo.svg"}
           width={23}
           height={23}
           alt="FrontMasterBox Logo"
-        />
-        <p className=" h2-bold font-spaceGrotesk text-dark-100 max-sm:hidden dark:text-light-900">
-          Frontend<span className="text-primary-500">Box</span>
+        /> */}
+        <p className="h2-bold flex flex-col font-spaceGrotesk leading-5 text-dark-100 max-sm:hidden dark:text-light-900">
+          <span>Frontend</span>
+          <span className="text-primary-500">MasterBox</span>
         </p>
       </Link>
       {/** Global Search */}
