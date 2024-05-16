@@ -1,5 +1,6 @@
 import Header from "@/components/shared/header/Header";
 import LeftSidebar from "@/components/shared/sidebar/LeftSidebar";
+import RightSidebar from "@/components/shared/sidebar/RightSidebar";
 import React from "react";
 
 interface PlatformLayoutProps {
@@ -20,7 +21,7 @@ const PlatformLayout: React.FC<PlatformLayoutProps> = ({ children }) => {
           <div className=" mx-auto w-full max-w-5xl">{children}</div>
         </section>
         {/** RightSidebar */}
-        <aside> RightSidebar </aside>
+        <RightSidebar />
       </main>
       {/** Footer & Toaster */}
       <footer>
