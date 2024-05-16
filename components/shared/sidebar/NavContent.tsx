@@ -11,6 +11,7 @@ interface NavContentProps {
 }
 
 const NavContent: React.FC<NavContentProps> = ({ className, sheetClose }) => {
+  // using to check active links
   const pathname = usePathname();
 
   return (
@@ -23,6 +24,7 @@ const NavContent: React.FC<NavContentProps> = ({ className, sheetClose }) => {
           <Link
             key={link.route}
             href={link.route}
+            prefetch={true}
             // eslint-disable-next-line tailwindcss/no-custom-classname
             className={`${
               isActive
