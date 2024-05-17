@@ -1,3 +1,4 @@
+import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
@@ -22,6 +23,18 @@ const HomePage: React.FC<HomePageProps> = () => {
           </Link>
         </div>
         {/** Search + Filter */}
+        <div className=" mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
+          <LocalSearchbar
+            route="/home"
+            iconPosition="left"
+            imgSrc="/assets/icons/search.svg"
+            placholder="Search for Questions Here..." 
+            className="flex-1"
+          />
+          filter
+          {/*
+          <Filter /> */}
+        </div>
       </section>
       <section id="questions-items" className=""></section>
     </>
