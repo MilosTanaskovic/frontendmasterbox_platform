@@ -1,6 +1,6 @@
-import { SidebarLink } from "@/types";
+import { SidebarLinkType, AppLinkType, ThemeType } from "@/types";
 
-export const themes = [
+export const themes: ThemeType[] = [
   {
     value: "light",
     label: "Light",
@@ -18,8 +18,28 @@ export const themes = [
   },
 ];
 
-// Platform routes
-export const sidebarLinks: SidebarLink[] = [
+/** Main Apps routes */
+export const AppLinks: AppLinkType[] = [
+  {
+    route: "/home",
+    name: "DevOverflow",
+  },
+  {
+    route: "/home-classroom",
+    name: "DevFinder",
+  },
+  {
+    route: "/home-app1",
+    name: "App3",
+  },
+  {
+    route: "/home-app2",
+    name: "App4",
+  },
+];
+
+// App DevOverflow routes
+export const sidebarLinks: SidebarLinkType[] = [
   {
     imgURL: "/assets/icons/home.svg",
     route: "/home",
@@ -56,4 +76,3 @@ export const sidebarLinks: SidebarLink[] = [
     label: "Ask a question",
   },
 ];
-

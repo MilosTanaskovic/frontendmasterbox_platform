@@ -1,30 +1,14 @@
-/** 
-export const themes = [
-  {
-    value: "light",
-    label: "Light",
-    icon: "./assets/icons/sun.svg",
-  },
-  {
-    value: "dark",
-    label: "Dark",
-    icon: "./assets/icons/moon.svg",
-  },
-  {
-    value: "system",
-    label: "System",
-    icon: "./assets/icons/computer.svg",
-  },
-];
- */
-
-export interface Theme {
+export type ThemeType = {
   value: "dark" | "light" | "system";
   label: "Dark" | "Light" | "System";
   icon: string;
 }
 
-export interface SidebarLink {
+export type AppLinkType = {
+  route: string;
+  name: string;
+}
+export type SidebarLinkType = {
   imgURL: string;
   route: string;
   label: string;
