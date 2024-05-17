@@ -30,7 +30,7 @@ const AppLink: React.FC<AppLinkProps> = ({ link }) => {
           isActive
             ? "base-semibold text-primary-500"
             : "text-dark200_light900 hover:text-primary-500"
-        } paragraph-16  base-medium py-4 `}
+        }  base-medium py-4 `}
       >
         {name}
       </span>
