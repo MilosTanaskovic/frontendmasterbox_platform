@@ -13,3 +13,7 @@ export type SidebarLinkType = {
   route: string;
   label: string;
 }
+export type QuestionFilterType = {
+  label: string;
+  value: string;
+}

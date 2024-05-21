@@ -1,4 +1,4 @@
-import { SidebarLinkType, AppLinkType, ThemeType } from "@/types";
+import { SidebarLinkType, AppLinkType, ThemeType, QuestionFilterType } from "@/types";
 
 export const themes: ThemeType[] = [
   {
@@ -75,4 +75,25 @@ export const sidebarLinks: SidebarLinkType[] = [
     route: "/ask-question",
     label: "Ask a question",
   },
+];
+
+/** Filters */
+// DevOverflow - Home
+export const questionFilter: QuestionFilterType[] = [
+  {
+    label: "Newest",
+    value: "newest",
+  },
+  {
+    label: "Recommended",
+    value: "recommended",
+  },
+  {
+    label: "Frequent",
+    value: "frequent",
+  },
+  {
+    label: "Unanswered",
+    value: "unanswered",
+  }
 ];
