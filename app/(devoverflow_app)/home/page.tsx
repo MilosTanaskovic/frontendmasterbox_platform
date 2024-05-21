@@ -1,5 +1,8 @@
+import LocalSelectFilter from "@/components/shared/filter/LocalSelectFilter";
+import RenderFilter from "@/components/shared/filter/RenderFilter";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { Button } from "@/components/ui/button";
+import { questionFilter } from "@/constants";
 import Link from "next/link";
 import React from "react";
 
@@ -22,19 +25,24 @@ const HomePage: React.FC<HomePageProps> = () => {
             </Button>
           </Link>
         </div>
-        {/** Search + Filter */}
+        {/** Search + Select Filter */}
         <div className=" mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
           <LocalSearchbar
             route="/home"
             iconPosition="left"
             imgSrc="/assets/icons/search.svg"
-            placholder="Search for Questions Here..." 
+            placholder="Search for Questions Here..."
             className="flex-1"
           />
-          filter
-          {/*
-          <Filter /> */}
+          <LocalSelectFilter
+            filters={questionFilter}
+            otherClasses="min-h-[56px] sm:min-w-[170px]"
+            containerClasses="hidden max-md:flex"
+            placeholder="Select a Filter"
+          />
         </div>
+        {/** RenderFilter */}
+        <RenderFilter questionFilter={questionFilter} />
       </section>
       <section id="questions-items" className=""></section>
     </>

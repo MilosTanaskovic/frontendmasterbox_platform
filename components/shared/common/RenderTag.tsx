@@ -9,7 +9,7 @@ interface RenderTagProps {
   showCount?: boolean;
 }
 
-const RenderTag: React.FC<RenderTagProps> = ({ _id, name, totalQuestions, showCount }) => {
+const RenderTag: React.FC<RenderTagProps> = ({ _id, name, totalQuestions, showCount = false }) => {
   return (
     <Link
       href={`/tags/${_id}`}
