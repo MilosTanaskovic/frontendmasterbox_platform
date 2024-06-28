@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/menubar";
 import { useTheme } from "@/context/ThemeProvider";
 import Image from "next/image";
-import { themes } from "@/constants";
+import { themes } from "@/constants/global";
 
 /**  if we need to use it globaly, 
 then we should move it to types folder! */
