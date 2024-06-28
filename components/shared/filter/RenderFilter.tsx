@@ -1,10 +1,10 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
-import { QuestionFilterType } from "@/types";
+import { FilterType } from "@/types";
 import React from "react";
 
 interface RenderFilterProps {
-  questionFilter: QuestionFilterType[];
+  questionFilter: FilterType[];
   containerClasses?: string;
   otherClasses?: string;
 }

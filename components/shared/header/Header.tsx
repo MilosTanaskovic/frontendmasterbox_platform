@@ -6,7 +6,7 @@ import React from "react";
 import Theme from "./Theme";
 import MobileNav from "./MobileNav";
 import GlobalSearch from "../search/GlobalSearch";
-import { AppLinks } from "@/constants";
+import { AppLinks } from "@/constants/global";
 import { AppLinkType } from "@/types";
 import { usePathname } from "next/navigation";
 
@@ -87,11 +87,11 @@ const Header: React.FC<HeaderProps> = () => {
         </div>
       </div>
       {/** App Links */}
-      <div className=" m-auto flex justify-center gap-8 pt-4 max-sm:overflow-x-auto">
+      <nav aria-labelledby="AppLinks" className=" m-auto flex justify-center gap-8 pt-4 max-sm:overflow-x-auto">
         {AppLinks.map((link) => {
           return <AppLink key={link.route} link={link} />;
         })}
-      </div>
+      </nav>
     </header>
   );
 };
