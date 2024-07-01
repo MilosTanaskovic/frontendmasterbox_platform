@@ -6,10 +6,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { QuestionFilterType } from "@/types";
+import { FilterType } from "@/types";
+
 
 interface LocalSelectFilterProps {
-  filters: QuestionFilterType[];
+  filters: FilterType[];
   placeholder: string;
   otherClasses?: string;
   containerClasses?: string;
