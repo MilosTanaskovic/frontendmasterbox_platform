@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 interface RenderQuestionProps {
-  _id: number;
+  _id: string;
   title: string;
 }
 

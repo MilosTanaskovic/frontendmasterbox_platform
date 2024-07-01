@@ -7,98 +7,102 @@ import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/dev-overflow-app";
 import Link from "next/link";
 import { NoResult } from "@/components/shared/common";
+import { QuestionCardDataType } from "@/types/card";
 
 interface HomePageProps {}
 
 const HomePage: React.FC<HomePageProps> = () => {
-  const dammyQuestionsData: any = [
-    // {
-    //   _id: 1,
-    //   title: "How to use React Router?",
-    //   description:
-    //     "I am trying to use React Router but I am not able to use it.",
-    //   tags: [
-    //     {
-    //       _id: 1,
-    //       name: "JavaScript",
-    //     },
-    //     {
-    //       _id: 2,
-    //       name: "React",
-    //     },
-    //     {
-    //       _id: 3,
-    //       name: "HTML5",
-    //     },
-    //   ],
-    //   user: {
-    //     name: "John Doe",
-    //     avatar: "/assets/images/avatar.jpg",
-    //   },
-    //   upvotes: 10,
-    //   createdAt: "2021-09-01T12:00:00.000Z",
-    //   votes: 30,
-    //   views: 10,
-    //   answers: 2,
-    // },
-    // {
-    //   _id: 2,
-    //   title: "What is the difference between React and React Native?",
-    //   description:
-    //     "I am trying to understand the difference between React and React Native.",
-    //   tags: [
-    //     {
-    //       _id: 1,
-    //       name: "JavaScript",
-    //     },
-    //     {
-    //       _id: 2,
-    //       name: "React",
-    //     },
-    //     {
-    //       _id: 3,
-    //       name: "HTML5",
-    //     },
-    //   ],
-    //   user: {
-    //     name: "Jane Doe",
-    //     avatar: "/assets/images/avatar.jpg",
-    //   },
-    //   upvotes: 20,
-    //   createdAt: "2021-09-01T12:00:00.000Z",
-    //   votes: 30,
-    //   views: 5,
-    //   answers: 1,
-    // },
-    // {
-    //   _id: 3,
-    //   title: "How to use React Hooks?",
-    //   description:
-    //     "I am trying to use React Hooks but I am not able to use it.",
-    //   tags: [
-    //     {
-    //       _id: 1,
-    //       name: "JavaScript",
-    //     },
-    //     {
-    //       _id: 2,
-    //       name: "React",
-    //     },
-    //     {
-    //       _id: 3,
-    //       name: "HTML5",
-    //     },
-    //   ],
-    //   user: {
-    //     name: "John Doe",
-    //     avatar: "/assets/images/avatar.jpg",
-    //   },
-    //   upvotes: 28,
-    //   createdAt: "2021-09-01T12:00:00.000Z",
-    //   votes: 30,
-    //   views: 8,
-    //   answers: 3,
-    // },
+  const dammyQuestionsData: QuestionCardDataType[] = [
+    {
+      _id: "1",
+      title: "How to use React Router?",
+      description:
+        "I am trying to use React Router but I am not able to use it.",
+      tags: [
+        {
+          _id: "1",
+          name: "JavaScript",
+        },
+        {
+          _id: "2",
+          name: "React",
+        },
+        {
+          _id: "3",
+          name: "HTML5",
+        },
+      ],
+      author: {
+        _id: "1",
+        name: "John Doe",
+        picture: "",
+      },
+      upvotes: 10,
+      createdAt: new Date("2024-07-01T12:00:00.000Z"),
+      votes: 3000000,
+      views: 3400,
+      answers: [],
+    },
+    {
+      _id: "2",
+      title: "What is the difference between React and React Native?",
+      description:
+        "I am trying to understand the difference between React and React Native.",
+      tags: [
+        {
+          _id: "1",
+          name: "JavaScript",
+        },
+        {
+          _id: "2",
+          name: "React",
+        },
+        {
+          _id: "3",
+          name: "HTML5",
+        },
+      ],
+      author: {
+        _id: "1",
+        name: "John Doe",
+        picture: "",
+      },
+      upvotes: 20,
+      createdAt: new Date("2021-09-01T12:00:00.000Z"),
+      votes: 30,
+      views: 5,
+      answers: [],
+    },
+    {
+      _id: "3",
+      title: "How to use React Hooks?",
+      description:
+        "I am trying to use React Hooks but I am not able to use it.",
+      tags: [
+        {
+          _id: "1",
+          name: "JavaScript",
+        },
+        {
+          _id: "2",
+          name: "React",
+        },
+        {
+          _id: "3",
+          name: "HTML5",
+        },
+      ],
+      author: {
+        _id: "1",
+        name: "John Doe",
+        picture: "",
+      },
+      upvotes: 28,
+      createdAt: new Date("2021-09-01T12:00:00.000Z"),
+      votes: 30,
+      views: 8,
+      answers: [],
+    },
   ];
   return (
     <>
@@ -141,7 +145,7 @@ const HomePage: React.FC<HomePageProps> = () => {
         <div className="mt-10 flex w-full flex-col gap-6">
           {/* <h2 className="h2-bold text-dark100_light900">Recent Questions</h2> */}
           {dammyQuestionsData.length > 0 ? (
-            dammyQuestionsData?.map((questionCardData: any) => {
+            dammyQuestionsData?.map((questionCardData) => {
               return (
                 <QuestionCard
                   key={questionCardData.title}
