@@ -1,23 +1,24 @@
-type UserType = {
+type AuthorType = {
+  _id: string;
   name: string;
-  avatar: string;
+  picture: string;
 };
 
 type TagsType = {
-  _id: number;
+  _id: string;
   name: string;
   totalQuestions?: number;
 };
 
 export type QuestionCardDataType = {
-  _id: number;
+  _id: string;
   title: string;
   description: string;
   tags: TagsType[];
-  user: UserType;
+  author: AuthorType;
   upvotes: number;
-  createdAt: string;
+  createdAt: Date;
   votes: number;
   views: number;
-  answers: number;
+  answers: Array<object>;
 };
