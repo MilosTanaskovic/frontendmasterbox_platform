@@ -1,9 +1,13 @@
 import React from "react";
 import { RenderTag, RenderQuestion } from "../common";
 
-interface RightSidebarProps {}
+interface RightSidebarProps {
+  isHeaderVisible?: boolean;
+}
 
-const RightSidebar: React.FC<RightSidebarProps> = () => {
+const RightSidebar: React.FC<RightSidebarProps> = ({
+  isHeaderVisible = true,
+}) => {
   const hotQuestions = [
     {
       _id: "1",
@@ -63,7 +67,7 @@ const RightSidebar: React.FC<RightSidebarProps> = () => {
   return (
     <aside
       id="right-sidebar"
-      className="background-light900_dark200 light-border sticky right-0 top-0 flex h-screen w-[350px] flex-col overflow-y-auto border-l p-6 pt-52 shadow-light-300 max-xl:hidden dark:shadow-none"
+      className={`${isHeaderVisible ? 'pt-52' : 'pt-10'} background-light900_dark200 light-border sticky right-0 top-0 flex h-screen w-[350px] flex-col overflow-y-auto border-l p-6 shadow-light-300 max-xl:hidden dark:shadow-none`}
     >
       <div className="">
         <h3 className=" h3-bold text-dark200_light900">Hot Network</h3>
