@@ -20,7 +20,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ questionCardData }) => {
   const { _id, title, tags, votes, answers, views, author, createdAt } =
     questionCardData;
   return (
-    <Card className="card-wrapper ">
+    <Card className="card-wrapper light-border-2 ">
       <CardHeader className=" flex-col-reverse items-start justify-between gap-5 sm:flex-row">
         <div>
           <span className=" subtle-regular text-dark400_light700 line-clamp-1 flex sm:hidden">
