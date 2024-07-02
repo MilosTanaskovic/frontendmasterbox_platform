@@ -2,8 +2,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import DevOverflowAppLayout from "./(devoverflow_app)/layout";
 import HomePage from "./(devoverflow_app)/home/page";
 import { sidebarLinks } from "@/constants/dev-overflow-app";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { PrimaryButton } from "@/components/shared/common";
 
 export default function Home() {
   return (
@@ -26,11 +25,7 @@ export default function Home() {
             web development, mobile app development, algorithms, data structure
             and more.
           </p>
-          <Link href={"/sign-in"} className=" flex justify-end max-sm:w-full">
-            <Button className=" primary-gradient min-h-[46px] px-4 py-3 !text-light-900">
-              Get Started
-            </Button>
-          </Link>
+          <PrimaryButton href="/sign-in" name="Get Started" />
         </div>
       </section>
       {/** Apps Examples */}

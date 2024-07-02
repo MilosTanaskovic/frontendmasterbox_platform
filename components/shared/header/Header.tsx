@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = () => {
           alt="FrontMasterBox Logo"
         /> */}
           <p className="h2-bold flex flex-col font-spaceGrotesk leading-5 text-dark-100 max-sm:hidden dark:text-light-900">
-            <span>Frontend</span>
+            <span>JavaScript</span>
             <span className="text-primary-500">MasterBox</span>
           </p>
         </Link>
