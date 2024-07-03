@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 "use client";
-import React from "react";
+import React, { useRef } from "react";
+import { Editor } from "@tinymce/tinymce-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -14,13 +16,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { AskQuestionSchema } from "@/lib/validations";
 import { Button } from "@/components/ui/button";
 
 interface AskQuestionFormProps {}
 
 const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
+  const editorRef = useRef<Editor | null>(null);
   // 1. Define your form.
   const form = useForm<z.infer<typeof AskQuestionSchema>>({
     resolver: zodResolver(AskQuestionSchema),
@@ -79,10 +81,46 @@ const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
                 <span className=" text-red-500">*</span>
               </FormLabel>
               <FormControl className="mt-3.5">
-                <Textarea
-                  placeholder="Tell us a little bit about yourself"
-                  className="resize-none"
-                  {...field}
+                {/** Editor */}
+                <Editor
+                  apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
+                  onInit={(_evt, editor) =>
+                    // @ts-ignore
+                    (editorRef.current = editor)
+                  }
+                  initialValue=""
+                  init={{
+                    height: 350,
+                    menubar: false,
+                    plugins: [
+                      "advlist",
+                      "autolink",
+                      "lists",
+                      "link",
+                      "image",
+                      "charmap",
+                      "preview",
+                      "anchor",
+                      "searchreplace",
+                      "visualblocks",
+                      "codesample",
+                      "fullscreen",
+                      "insertdatetime",
+                      "media",
+                      "table",
+                      "code",
+                      "help",
+                      "wordcount",
+                    ],
+                    toolbar:
+                      "undo redo | blocks | " +
+                      "codesample | bold italic forecolor | alignleft aligncenter " +
+                      "alignright alignjustify | bullist numlist outdent indent | " +
+                      "removeformat | help",
+                    content_style:
+                      "body { font-family:Inter; font-size:16px }",
+                    statusbar: false,
+                  }}
                 />
               </FormControl>
               <FormDescription className=" body-regular mt-2.5 text-light-500">

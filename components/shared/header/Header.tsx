@@ -10,7 +10,9 @@ import { AppLinks } from "@/constants/global";
 import { AppLinkType } from "@/types";
 import { usePathname } from "next/navigation";
 
-interface HeaderProps {}
+interface HeaderProps {
+  isVisible?: boolean;
+}
 
 interface AppLinkProps {
   link: AppLinkType;
@@ -34,22 +36,18 @@ const AppLink: React.FC<AppLinkProps> = ({ link }) => {
       >
         {name}
       </span>
-      <span
-        className={`${
-          isActive ? "bg-primary-500" : ""
-        } h-1 w-full`}
-      ></span>
+      <span className={`${isActive ? "bg-primary-500" : ""} h-1 w-full`}></span>
     </Link>
   );
 };
 
-const Header: React.FC<HeaderProps> = () => {
+const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
   return (
     <header
       id="header"
-      className="background-light900_dark200 fixed z-50 w-full gap-5 pt-6 shadow-light-300 sm:px-12 dark:shadow-none"
+      className="background-light900_dark200 fixed z-50 w-full gap-5 shadow-light-300 sm:px-12 dark:shadow-none"
     >
-      <div className=" flex-between flex">
+      <div className="flex-between flex py-6">
         {/** Logo */}
         <Link href={"/"} className=" flex items-center gap-1">
           {/* <Image
@@ -87,11 +85,16 @@ const Header: React.FC<HeaderProps> = () => {
         </div>
       </div>
       {/** App Links */}
-      <nav aria-labelledby="AppLinks" className=" m-auto flex justify-center gap-8 pt-4 max-sm:overflow-x-auto">
-        {AppLinks.map((link) => {
-          return <AppLink key={link.route} link={link} />;
-        })}
-      </nav>
+      {isVisible && (
+        <nav
+          aria-labelledby="AppLinks"
+          className=" m-auto flex justify-center gap-8 max-sm:overflow-x-auto"
+        >
+          {AppLinks.map((link) => {
+            return <AppLink key={link.route} link={link} />;
+          })}
+        </nav>
+      )}
     </header>
   );
 };

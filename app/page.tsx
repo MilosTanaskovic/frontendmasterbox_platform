@@ -3,18 +3,16 @@ import DevOverflowAppLayout from "./(devoverflow_app)/layout";
 import HomePage from "./(devoverflow_app)/home/page";
 import { sidebarLinks } from "@/constants/dev-overflow-app";
 import { PrimaryButton } from "@/components/shared/common";
+import Header from "@/components/shared/header/Header";
 
 export default function Home() {
   return (
     <>
-      {/* <Link href={"/sign-in"}>
-        <Button className=" small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
-          <span className=" primary-text-gradient">Log In</span>
-        </Button>
-      </Link> */}
+      {/** Header Landing Page */}
+      <Header isVisible={false} />
       {/** Hero Section */}
       <section className="container">
-        <div className=" m-auto flex max-w-screen-md flex-col items-center gap-3 py-24">
+        <div className=" m-auto flex max-w-screen-md flex-col items-center gap-3 pb-24 pt-40">
           <h1 className=" h1-bold text-dark100_light900 text-3xl md:text-5xl">
             Welcome to DevOverflow
           </h1>
