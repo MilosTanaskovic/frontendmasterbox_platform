@@ -18,6 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { AskQuestionSchema } from "@/lib/validations";
 import { Button } from "@/components/ui/button";
+import { RenderTag } from "../common";
 
 interface AskQuestionFormProps {}
 
@@ -40,6 +41,43 @@ const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
     console.log(values);
   }
 
+  // handle KeyborardEvent on Input
+  const handleInputKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    field: any
+  ) => {
+    if (e.key === "Enter" && field.name === "tags") {
+      e.preventDefault();
+
+      const tagInput = e.target as HTMLInputElement;
+      const tagValue = tagInput.value.trim();
+
+      if (tagValue !== "") {
+        if (tagValue.length > 15) {
+          return form.setError("tags", {
+            type: "required",
+            message: "Tag should be less than 15 characters",
+          });
+        }
+
+        if (!field.value.includes(tagValue as never)) {
+          form.setValue("tags", [...field.value, tagValue]);
+          tagInput.value = "";
+          form.clearErrors("tags");
+        }
+      } else {
+        form.trigger();
+      }
+    }
+  };
+
+  // handle remove tag
+  const handleTagRemove = (name: string, field: any) => {
+    const newTags = field.value.filter((t: string) => t !== name);
+    form.setValue('tags', newTags);
+  };
+  console.log("form", form);
+  console.log("tags")
   return (
     <Form {...form}>
       <form
@@ -117,8 +155,7 @@ const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
                       "codesample | bold italic forecolor | alignleft aligncenter " +
                       "alignright alignjustify | bullist numlist outdent indent | " +
                       "removeformat | help",
-                    content_style:
-                      "body { font-family:Inter; font-size:16px }",
+                    content_style: "body { font-family:Inter; font-size:16px }",
                     statusbar: false,
                   }}
                 />
@@ -141,11 +178,29 @@ const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
                 Tags <span className=" text-red-500">*</span>
               </FormLabel>
               <FormControl className="mt-3.5">
-                <Input
-                  placeholder="Add Tags..."
-                  className=" no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
-                  {...field}
-                />
+                <>
+                  <Input
+                    placeholder="Add Tags..."
+                    className=" no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+                    onKeyDown={(e) => handleInputKeyDown(e, field)}
+                  />
+                  {/** Tags Badge */}
+                  {field.value.length > 0 && (
+                    <div className=" flex-start mt-2.5 gap-2.5">
+                      {field.value.map((tag) => (
+                       <RenderTag
+                        key={tag}
+                        name={tag}
+                        field={field}
+                        _id={tag}
+                        showCount={false}
+                        showIcon={true}
+                        handleTagRemove={handleTagRemove}
+                       />
+                      ))}
+                    </div>
+                  )}
+                </>
               </FormControl>
               <FormDescription className=" body-regular mt-2.5 text-light-500">
                 Add up to 5 tags to describe what your question is about. Start
