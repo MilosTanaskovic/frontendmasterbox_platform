@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { QuestionCard } from "@/components/shared/card";
 import LocalSelectFilter from "@/components/shared/filter/LocalSelectFilter";

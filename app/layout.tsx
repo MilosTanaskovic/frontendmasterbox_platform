@@ -1,10 +1,10 @@
+/* eslint-disable @next/next/no-sync-scripts */
 /* eslint-disable camelcase */
 import React from "react";
 import type { Metadata } from "next";
-import { ClerkProvider } from "@clerk/nextjs";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/context/ThemeProvider";
+import GlobalPlatformProvider from "@/context/GlobalPlatformProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,17 +34,15 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="icon" href="/favicon.ico" />
+        <script src="http://localhost:8097"></script>
+      </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
-        <ClerkProvider
-          appearance={{
-            elements: {
-              formButtonPrimary: "primary-gradient",
-              footerActionLink: "primary-text-gradient hover:text-primary-500",
-            },
-          }}
-        >
-          <ThemeProvider>{children}</ThemeProvider>
-        </ClerkProvider>
+        <GlobalPlatformProvider>{children}</GlobalPlatformProvider>
       </body>
     </html>
   );

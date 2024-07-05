@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState, useTransition } from "react";
+import { useFormStatus } from "react-dom";
 import { Editor } from "@tinymce/tinymce-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -20,9 +21,15 @@ import { AskQuestionSchema } from "@/lib/validations";
 import { Button } from "@/components/ui/button";
 import { RenderTag } from "../common";
 
+const formType: any = "create";
+
 interface AskQuestionFormProps {}
 
 const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+  const { pending } = useFormStatus()
+
   const editorRef = useRef<Editor | null>(null);
   // 1. Define your form.
   const form = useForm<z.infer<typeof AskQuestionSchema>>({
@@ -36,8 +43,20 @@ const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof AskQuestionSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+    setIsSubmitting(true);
+
+    try {
+      // make an async call to our API -> create a question
+      // contain all form data
+      // navigate to home page
+    } catch (error) {
+      setError(
+        `An error occurred while submitting your question. ${error} Please try again.`
+      );
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
     console.log(values);
   }
 
@@ -74,10 +93,10 @@ const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
   // handle remove tag
   const handleTagRemove = (name: string, field: any) => {
     const newTags = field.value.filter((t: string) => t !== name);
-    form.setValue('tags', newTags);
+    form.setValue("tags", newTags);
   };
   console.log("form", form);
-  console.log("tags")
+  console.log("tags");
   return (
     <Form {...form}>
       <form
@@ -188,15 +207,15 @@ const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
                   {field.value.length > 0 && (
                     <div className=" flex-start mt-2.5 gap-2.5">
                       {field.value.map((tag) => (
-                       <RenderTag
-                        key={tag}
-                        name={tag}
-                        field={field}
-                        _id={tag}
-                        showCount={false}
-                        showIcon={true}
-                        handleTagRemove={handleTagRemove}
-                       />
+                        <RenderTag
+                          key={tag}
+                          name={tag}
+                          field={field}
+                          _id={tag}
+                          showCount={false}
+                          showIcon={true}
+                          handleTagRemove={handleTagRemove}
+                        />
                       ))}
                     </div>
                   )}
@@ -210,7 +229,17 @@ const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button
+          type="submit"
+          className=" primary-gradient w-fit !text-light-900"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <>{formType === "edit" ? "Editing..." : "Posting..."}</>
+          ) : (
+            <>{formType === "edit" ? "Edit Question" : "Ask a Question"}</>
+          )}
+        </Button>
       </form>
     </Form>
   );
