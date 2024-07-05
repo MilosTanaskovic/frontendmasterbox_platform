@@ -46,28 +46,36 @@ I welcome contributions from the community! Here's how you can contribute to the
    cd frontendmasterbox_platform
    ```
 
-3. **Create a new branch**: Create a new branch for your feature or bug fix.
+3. **Run a server**:
+
+   ```bash
+   npm run dev
+
+   react-devtools
+   ```
+
+4. **Create a new branch**: Create a new branch for your feature or bug fix.
 
    ```bash
    git checkout -b feature-name
    ```
 
-4. **Make your changes**: Implement your feature or bug fix.
+5. **Make your changes**: Implement your feature or bug fix.
 
-5. **Commit your changes**: Commit your changes with a clear and concise message.
+6. **Commit your changes**: Commit your changes with a clear and concise message.
 
    ```bash
    git add .
    git commit -m "Description of the feature or fix"
    ```
 
-6. **Push your changes**: Push your changes to your forked repository.
+7. **Push your changes**: Push your changes to your forked repository.
 
    ```bash
    git push origin feature-name
    ```
 
-7. **Open a Pull Request**: Go to the original repository on GitHub and open a pull request. Provide a detailed description of your changes and any relevant information.
+8. **Open a Pull Request**: Go to the original repository on GitHub and open a pull request. Provide a detailed description of your changes and any relevant information.
 
 ### Contribution Guidelines
 
