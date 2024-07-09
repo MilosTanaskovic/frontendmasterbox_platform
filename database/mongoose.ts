@@ -14,7 +14,7 @@ export const connectToDatabase = async () => {
 
   try {
     await mongoose.connect(process.env.MONGODB_JSCD_PLATFORM_URL as string, {
-      dbName: "devoverflow_app",
+      dbName: "jscd",
     });
 
     isConnected = true;
