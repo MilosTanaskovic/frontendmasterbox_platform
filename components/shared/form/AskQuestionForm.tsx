@@ -21,15 +21,20 @@ import { AskQuestionSchema } from "@/lib/validations";
 import { Button } from "@/components/ui/button";
 import { RenderTag } from "../common";
 import { createQuestion } from "@/server-actions/devoverflow_app/question.action";
+import { usePathname, useRouter } from "next/navigation";
 
 const formType: any = "create";
 
-interface AskQuestionFormProps {}
+interface AskQuestionFormProps {
+  mongoUserId: string;
+}
 
-const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
+const AskQuestionForm: React.FC<AskQuestionFormProps> = ({ mongoUserId }) => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const editorRef = useRef<Editor | null>(null);
   // 1. Define your form.
@@ -49,8 +54,14 @@ const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
     try {
       // make an async call to our API -> create a question
       // contain all form data
-      await createQuestion({});
+      await createQuestion({
+        title: values.title,
+        content: values.explanation,
+        tags: values.tags,
+        author: JSON.parse(mongoUserId),
+      });
       // navigate to home page
+      router.push("/home")
     } catch (error) {
       setError(
         `An error occurred while submitting your question. ${error} Please try again.`
@@ -59,7 +70,6 @@ const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
     } finally {
       setIsSubmitting(false);
     }
-    console.log(values);
   }
 
   // handle KeyborardEvent on Input
@@ -97,8 +107,8 @@ const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
     const newTags = field.value.filter((t: string) => t !== name);
     form.setValue("tags", newTags);
   };
-  console.log("form", form);
-  console.log("tags");
+  // console.log("form", form);
+  // console.log("tags");
   return (
     <Form {...form}>
       <form
