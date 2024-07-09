@@ -5,103 +5,13 @@ import RenderFilter from "@/components/shared/filter/RenderFilter";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { HomePageFilters } from "@/constants/dev-overflow-app";
 import { NoResult, PrimaryButton } from "@/components/shared/common";
-import { QuestionCardDataType } from "@/types/card";
+import { getQuestions } from "@/server-actions/devoverflow_app/question.action";
 
 interface HomePageProps {}
 
-const HomePage: React.FC<HomePageProps> = () => {
-  const dammyQuestionsData: QuestionCardDataType[] = [
-    {
-      _id: "1",
-      title: "How to use React Router?",
-      description:
-        "I am trying to use React Router but I am not able to use it.",
-      tags: [
-        {
-          _id: "1",
-          name: "JavaScript",
-        },
-        {
-          _id: "2",
-          name: "React",
-        },
-        {
-          _id: "3",
-          name: "HTML5",
-        },
-      ],
-      author: {
-        _id: "1",
-        name: "John Doe",
-        picture: "",
-      },
-      upvotes: 10,
-      createdAt: new Date("2024-07-01T12:00:00.000Z"),
-      votes: 3000000,
-      views: 3400,
-      answers: [],
-    },
-    {
-      _id: "2",
-      title: "What is the difference between React and React Native?",
-      description:
-        "I am trying to understand the difference between React and React Native.",
-      tags: [
-        {
-          _id: "1",
-          name: "JavaScript",
-        },
-        {
-          _id: "2",
-          name: "React",
-        },
-        {
-          _id: "3",
-          name: "HTML5",
-        },
-      ],
-      author: {
-        _id: "1",
-        name: "John Doe",
-        picture: "",
-      },
-      upvotes: 20,
-      createdAt: new Date("2021-09-01T12:00:00.000Z"),
-      votes: 30,
-      views: 5,
-      answers: [],
-    },
-    {
-      _id: "3",
-      title: "How to use React Hooks?",
-      description:
-        "I am trying to use React Hooks but I am not able to use it.",
-      tags: [
-        {
-          _id: "1",
-          name: "JavaScript",
-        },
-        {
-          _id: "2",
-          name: "React",
-        },
-        {
-          _id: "3",
-          name: "HTML5",
-        },
-      ],
-      author: {
-        _id: "1",
-        name: "John Doe",
-        picture: "",
-      },
-      upvotes: 28,
-      createdAt: new Date("2021-09-01T12:00:00.000Z"),
-      votes: 30,
-      views: 8,
-      answers: [],
-    },
-  ];
+const HomePage: React.FC<HomePageProps> = async () => {
+  const questionData = await getQuestions({});
+  const { questions } = questionData;
 
   return (
     <>
@@ -135,8 +45,8 @@ const HomePage: React.FC<HomePageProps> = () => {
       <section id="questions-cards" className="">
         <div className="mt-10 flex w-full flex-col gap-6">
           {/* <h2 className="h2-bold text-dark100_light900">Recent Questions</h2> */}
-          {dammyQuestionsData.length > 0 ? (
-            dammyQuestionsData?.map((questionCardData) => {
+          {questions.length > 0 ? (
+            questions?.map((questionCardData) => {
               return (
                 <QuestionCard
                   key={questionCardData.title}
