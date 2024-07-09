@@ -19,7 +19,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "JavaScript MasterBox",
+  title: "JavaScript CodeDancing Solution",
   description:
     "A community-driven platform for asking and aswering frontend programming questions. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in frontend web development, mobile app development, algorithms, data structure and more.",
   icons: {
