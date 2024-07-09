@@ -56,9 +56,9 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
           height={23}
           alt="FrontMasterBox Logo"
         /> */}
-          <p className="h2-bold flex flex-col font-spaceGrotesk leading-5 text-dark-100 max-sm:hidden dark:text-light-900">
-            <span>JavaScript</span>
-            <span className="text-primary-500">MasterBox</span>
+          <p className="h2-bold flex flex-col gap-1 font-spaceGrotesk leading-5 text-dark-100 max-sm:hidden dark:text-light-900">
+            <span className=" text-[30px]">JavaScript</span>
+            <span className="text-primary-500">CodeDancing</span>
           </p>
         </Link>
         {/** Global Search */}

@@ -25,6 +25,8 @@
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-tailwindcss": "^3.14.2",
     "lucide-react": "^0.376.0",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.4.5",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",

@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input";
 import { AskQuestionSchema } from "@/lib/validations";
 import { Button } from "@/components/ui/button";
 import { RenderTag } from "../common";
+import { createQuestion } from "@/server-actions/devoverflow_app/question.action";
 
 const formType: any = "create";
 
@@ -42,12 +43,13 @@ const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof AskQuestionSchema>) {
+  async function onSubmit(values: z.infer<typeof AskQuestionSchema>) {
     setIsSubmitting(true);
 
     try {
       // make an async call to our API -> create a question
       // contain all form data
+      await createQuestion({});
       // navigate to home page
     } catch (error) {
       setError(
@@ -145,6 +147,10 @@ const AskQuestionForm: React.FC<AskQuestionFormProps> = () => {
                     // @ts-ignore
                     (editorRef.current = editor)
                   }
+                  onBlur={field.onBlur}
+                  onEditorChange={(content, editor) => {
+                    field.onChange(content);
+                  }}
                   initialValue=""
                   init={{
                     height: 350,
