@@ -62,7 +62,7 @@ const AskQuestionForm: React.FC<AskQuestionFormProps> = ({ mongoUserId }) => {
         path: pathname,
       });
       // navigate to home page
-      router.push("/home")
+      router.push("/home");
     } catch (error) {
       setError(
         `An error occurred while submitting your question. ${error} Please try again.`
@@ -108,8 +108,7 @@ const AskQuestionForm: React.FC<AskQuestionFormProps> = ({ mongoUserId }) => {
     const newTags = field.value.filter((t: string) => t !== name);
     form.setValue("tags", newTags);
   };
-  // console.log("form", form);
-  // console.log("tags");
+
   return (
     <Form {...form}>
       <form
