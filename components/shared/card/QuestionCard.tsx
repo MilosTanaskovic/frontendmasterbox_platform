@@ -42,7 +42,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ questionCardData }) => {
       <CardFooter className=" w-full flex-wrap justify-between">
         <div>
           <MetricDisplay
-            imgUrl="/assets/icons/avatar.svg"
+            imgUrl={author.picture}
             alt="user"
             value={author.name}
             title={` - asked ${getTimestamp(createdAt)}`}
