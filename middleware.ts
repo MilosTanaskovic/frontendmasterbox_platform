@@ -9,6 +9,8 @@ const isPublicRoute = createRouteMatcher([
   "/profile/:id",
   "/community",
   "/jobs",
+  "/sign-in(.*)",
+  "/sign-up(.*)",
 ]);
 
 // const isProtectedRoute = createRouteMatcher(["/api/webhook", "/api/chatgpt"]);
