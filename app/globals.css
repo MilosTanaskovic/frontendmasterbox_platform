@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @import url("../styles/theme.css");
-@import url("../services/editor/src/styles/editor.css"); /* using from services - editor service*/
+/*  @import url("../services/editor/src/styles/editor.css"); using from services - editor service*/
 
 body {
   font-family: "Inter", sans-serif;
