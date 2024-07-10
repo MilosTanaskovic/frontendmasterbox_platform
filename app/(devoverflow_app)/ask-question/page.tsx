@@ -7,11 +7,11 @@ interface AskQuestionPageProps {}
 
 const AskQuestionPage: React.FC<AskQuestionPageProps> = async () => {
   // const { userId } = auth();
- const userId = "12345";
+  const userId = "12345";
   if (!userId) redirect("/sign-in");
 
-  const mongoUser = await getUserById({userId})
-  console.log("userMongo", mongoUser);
+  const mongoUser = await getUserById({ userId });
+
   return (
     <section id="ask-question-form">
       <h1 className=" h1-bold text-dark100_light900">Ask a public quesiton</h1>

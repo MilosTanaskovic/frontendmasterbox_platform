@@ -29,7 +29,7 @@ export async function createQuestion(params: CreateQuestionParams) {
   try {
     // connect to DB
     connectToDatabase();
-    console.log("params", params);
+
     const { title, content, tags, author, path } = params;
     // create a question
     const question = await questionModel.create({
